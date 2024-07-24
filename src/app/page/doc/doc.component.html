@@ -1,0 +1,53 @@
+<div class="relative isolate px-6 pt-14 lg:px-8 text-[var(--on-surface)]">
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+        <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[var(--primary)] to-[var(--secondary)] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+        </div>
+    </div>
+
+    <div class="mx-auto container lg:py-10">
+        <div class="mb-20">
+            <div>
+                <h2 class="text-4xl font-bold tracking-tight flex items-center sm:text-5xl">
+                    <app-logo [size]="50"/>
+                    Shopptex API Documentation
+                </h2>
+                <div class="flex justify-between items-center gap-2 mt-3">
+                    <div class="hidden sm:flex sm:justify-center">
+                        <div
+                            class="relative rounded-full px-3 py-1 text-sm leading-6 text-[var(--on-background)] ring-1 ring-[var(--on-surface-variant)]">
+                            <a href="/API/test" [routerLink]="'/API/test'" class="font-semibold text-[var(--primary)]"><span
+                                    class="absolute inset-0" aria-hidden="true"></span>Teste sua API aqui <span
+                                    aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl">Version:</span>
+                        <select
+                            class="rounded-md cursor-pointer bg-[var(--primary-container)] px-3.5 py-2.5 text-sm font-semibold text-[var(--on-primary-container)] shadow-sm hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:opacity-75 flex items-center gap-2">
+                            <option value="V1">V1</option>
+                        </select>
+                    </div>
+                </div>
+                <hr class="my-2 border-[var(--on-surface)]">
+                <div>O projeto <span class="font-bold text-[var(--on-primary-container)]">Shopptex</span> foi
+                    desenvolvido como um desafio no curso de Backend Ruby da FAP/Softex. Ele permite obter informações
+                    sobre produtos e detalhes da loja.</div>
+            </div>
+        </div>
+
+        @for (route of apiDoc; track $index) {
+        <app-route [route]="route" />
+        }
+
+    </div>
+
+
+
+    <div class="fixed inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+        aria-hidden="true">
+        <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[var(--primary)] to-[var(--secondary)] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+        </div>
+    </div>
+</div>

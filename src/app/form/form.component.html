@@ -1,0 +1,33 @@
+<form class="mt-10 flex flex-1 items-center justify-center gap-x-6" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="relative flex-1 text-[var(--on-background)]">
+        <div class="absolute inset-y-0 left-0 flex items-center">
+            <select formControlName="protocol"
+                class="h-full uppercase rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-1 focus:ring-2 focus:ring-inset focus:ring-[var(--primary)] sm:text-sm">
+                <option value="http">http</option>
+                <option value="https">https</option>
+            </select>
+        </div>
+        <input formControlName="hostname"
+            class="block w-full rounded-md border-0 px-4 py-2 pl-24 shadow-sm ring-1 ring-inset ring-[var(--primary)] bg-[var(--surface)] placeholder:text-on-background focus:ring-2 focus:ring-inset focus:ring-[var(--on-background)] sm:text-sm sm:leading-6"
+            value="localhost">
+        <div class="absolute inset-y-0 right-0 flex items-center w-1/4">
+            <div class="relative w-full flex items-center h-full">
+                <span class="absolute sm:text-sm pl-1">:</span>
+                <input type="number" formControlName="port"
+                    class="relative h-full w-full rounded-md border-0 bg-transparent bg-none py-0 px-4 focus:ring-2 focus:ring-inset focus:ring-[var(--primary)] sm:text-sm">
+            </div>
+        </div>
+    </div>
+    <button  type="submit"
+        [disabled]="(testService.running$ | async)"
+        class="rounded-md bg-[var(--primary-container)] px-3.5 py-2.5 text-sm font-semibold text-[var(--on-primary-container)] shadow-sm hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:opacity-75 flex items-center gap-2">
+        <span>Iniciar Teste</span>
+        @if (! (testService.running$ | async)) {
+            <app-logo/>
+        }
+        @else {
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" class="animate-spin">
+                <path d="M12 3C16.9706 3 21 7.02944 21 12H19C19 8.13401 15.866 5 12 5V3Z"></path></svg>
+        }
+    </button>
+</form>

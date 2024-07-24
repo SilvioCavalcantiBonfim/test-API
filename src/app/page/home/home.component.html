@@ -1,0 +1,49 @@
+<main class="relative isolate px-6 pt-14 lg:px-8">
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+      <div
+        class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[var(--primary)] to-[var(--secondary)] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+      </div>
+    </div>
+    <div
+    [ngClass]="(testService.result$ | async) === undefined 
+    ? 'mx-auto max-w-2xl py-32 sm:py-48 lg:py-56' 
+    : 'mx-auto max-w-2xl py-5'"
+    >
+      <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+        <div
+          class="relative rounded-full px-3 py-1 text-sm leading-6 text-[var(--on-background)] ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+          Documentação da API. <a [routerLink]="'/doc'" class="font-semibold text-[var(--primary)]"><span class="absolute inset-0"
+              aria-hidden="true"></span>Leia aqui <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="text-center">
+        <div class="flex justify-center items-center text-[var(--on-surface)]">
+          <app-logo [size]="100"/>
+          <h1 class="text-4xl font-bold tracking-tight  sm:text-5xl">Teste de API Shopptex</h1>
+        </div>
+        <p class="mt-6 text-lg leading-8 text-[var(--on-background)]">Validação de Endpoints e Funcionalidades: Garantindo
+          a Integridade dos Dados e a Comunicação Eficiente com o Frontend.</p>
+          <app-form class="flex-1"/>
+      </div>
+    </div>
+
+    @if ((testService.result$ | async) !== undefined ) {
+
+      <div class="container mx-auto flex flex-wrap justify-center gap-7 py-14">
+        @for (result of (testService.result$ | async); track $index) {
+          <app-card-result [result]="result" class=" w-[25%] hover:scale-105 cursor-pointer"></app-card-result>
+        }
+      </div>
+
+    }
+
+    <div
+      class="fixed inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+      aria-hidden="true">
+      <div
+        class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[var(--primary)] to-[var(--secondary)] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+      </div>
+    </div>
+  </main>

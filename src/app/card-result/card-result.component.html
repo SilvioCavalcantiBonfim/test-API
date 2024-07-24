@@ -1,0 +1,11 @@
+<div class="text-[var(--on-surface)] p-5 ring-[var(--on-surface)] rounded ring-0 hover:ring-1 ring-inset bg-[var(--surface)]">
+    <div class="flex items-center gap-5 font-bold text-lg" [ngClass]="result.status 
+    ? 'text-[var(--success)]' 
+    : 'text-[var(--error)]'">
+        <span class="material-symbols-outlined">
+            {{result.icon}}
+        </span>
+        <span>{{result.test}}</span>
+    </div>
+    <span class="font-extralight text-[var(--on-secondary-container)]">{{result.description}}</span>
+</div>

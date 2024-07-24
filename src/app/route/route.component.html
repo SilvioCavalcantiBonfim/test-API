@@ -1,0 +1,90 @@
+<div>
+    <div class="px-4 sm:px-6 bg-[var(--primary-container)] text-[var(--on-primary-container)] py-6 rounded-sm">
+        <h3 class="text-base font-semibold leading-7 flex items-center gap-2">
+            <span class="material-symbols-outlined">
+                route
+            </span>
+            <code>
+                <span class="pln">{{route.method.toUpperCase()}}: {{route.endpoint}}</span>
+            </code>
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm leading-6 flex items-center gap-2">
+            <span class="material-symbols-outlined">
+                chevron_right
+            </span>
+            <span>{{route.description}}</span>
+        </p>
+    </div>
+    <div class="mt-6 border-t border-[var(--on-surface)]">
+        <dl class="divide-y divide-[var(--on-surface)]">
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-[var(--secondary)] flex items-center gap-2">
+                    <span class="material-symbols-outlined">
+                        perm_media
+                    </span>
+                    Content-type
+                </dt>
+                <dd class="mt-1 text-sm leading-6 text-[var(--on-secondary-container)] sm:col-span-2 sm:mt-0">
+                    {{route.contentType}}</dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-[var(--secondary)] flex items-center gap-2">
+                    <span class="material-symbols-outlined">
+                        http
+                    </span>
+                    Responses
+                </dt>
+                <dd class="mt-1 text-sm leading-6 text-[var(--on-secondary-container)] sm:col-span-2 sm:mt-0 flex flex-col">
+                    @for (rp of route.responses; track $index) {
+                        <span>
+                            Status: {{rp.status}} - {{rp.description}}
+                        </span>
+                    }
+                </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-[var(--secondary)] flex items-center gap-2">
+                    <span class="material-symbols-outlined">
+                        link
+                    </span>
+                    Curl
+                </dt>
+                <dd class="mt-1 text-sm leading-6 text-[var(--on-secondary-container)] sm:col-span-2 sm:mt-0">
+                    <code><span class="pln">{{route.curl}}</span></code>
+                </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt class="text-sm font-medium leading-6 text-[var(--secondary)]">
+                    <div class=" flex items-center gap-2">
+                        <span class="material-symbols-outlined">
+                            schema
+                        </span>
+                        Schema
+                    </div>
+                </dt>
+                <dd class="mt-2 text-sm text-[var(--secondary)] sm:col-span-2 sm:mt-0">
+                    <ul role="list"
+                        class="divide-[var(--on-surface)] rounded-md border border-[var(--on-surface)]">
+                        <li class="flex items-center justify-between pt-4 pl-4 pr-5 text-sm leading-6">
+                            <span class="truncate font-semibold text-lg">[</span>
+                        </li>
+                        <li class="flex items-center justify-between pl-8 pr-5 text-sm leading-6">
+                            <span class="truncate font-semibold text-lg">{{'{'}}</span>
+                        </li>
+                        @for (attr of route.schema; track $index) {
+                            <app-attribute [attr]="attr"/>
+                        }
+                        
+                        
+                        <li class="flex items-center justify-between pl-8 pr-5 text-sm leading-6">
+                            <span class="truncate font-semibold text-lg">{{'}'}}</span>
+                        </li>
+                        <li class="flex items-center justify-between pb-4 pl-4 pr-5 text-sm leading-6">
+                            <span class="truncate font-semibold text-lg">]</span>
+                        </li>
+                    </ul>
+                </dd>
+            </div>
+        </dl>
+    </div>
+</div>
