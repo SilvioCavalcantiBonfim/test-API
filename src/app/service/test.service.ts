@@ -63,7 +63,7 @@ export class TestService {
 
     const promises = v1Tests.map(async test => {
 
-      const obs$ = this.httpClients[test.method.toUpperCase()](`${data.protocol}://${data.hostname}:${data.port}${test.endpoint}`)
+      const obs$ = this.httpClients[test.method.toUpperCase()](`${data.hostname}${test.endpoint}`)
 
       try {
         const data = await lastValueFrom(obs$)
@@ -72,6 +72,8 @@ export class TestService {
             const allPass = data.map(d => t.execute(d)).filter(a => !a.status);
             if(allPass.length > 0)
               this.resultSubject.next([allPass[0], ...(this.resultSubject.value ?? [])]);
+            else
+              this.resultSubject.next([t.execute(data[0]), ...(this.resultSubject.value ?? [])]);
           });
         } else {
           test.tests.forEach(t => {

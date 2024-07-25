@@ -18,9 +18,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      protocol: ['http', Validators.required],
-      hostname: ['localhost', Validators.required],
-      port: [8080, [Validators.required, Validators.min(1), Validators.max(65535)]]
+      hostname: ['http://localhost:4567', Validators.required]
     });
   }
 
